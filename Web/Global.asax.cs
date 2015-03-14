@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Framework.DI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,9 @@ namespace Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //init IoC container
+            DiConfig.Init();
         }
     }
 }
