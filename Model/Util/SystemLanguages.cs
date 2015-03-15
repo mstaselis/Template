@@ -25,7 +25,7 @@ namespace Framework.Model.Util
 
             this.Languages.Add(new Language
             {
-                Culture = "en-EN",
+                Culture = "en-US",
                 IsDefault = true,
                 Title = "English",
                 Code = "en"
