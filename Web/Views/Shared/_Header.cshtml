@@ -1,0 +1,29 @@
+﻿<div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <div class="logo"><h1>Mvc Template</h1></div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        
+    </div>
+
+    <!-- Split button -->
+    <div class="btn-group pull-right language-selector-button">
+        <button type="button" class="btn match-backgroud"><i class="fa fa-language"></i></button>
+        <button type="button" class="btn dropdown-toggle match-backgroud" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu match-backgroud" role="menu">
+            @{
+                foreach(var systemLanguage in Framework.Model.Util.LanguageProvider.SystemLanguages.Languages)
+                {
+                    <li>@Html.ActionLink(systemLanguage.Title, "Index", new { language = systemLanguage.Code, controller = "Home" })</li>
+                }
+            }
+        </ul>
+    </div>
+</div>
