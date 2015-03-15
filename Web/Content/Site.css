@@ -205,3 +205,13 @@ h1 { font-size: 24px; }
 		padding-right: 0;
 	}
 }
+
+/* Some helper styles */
+.language-selector-button{
+	margin-top:7px;
+	margin-right:20px;
+}
+
+.match-backgroud{
+	background-color:#e5ebf2;
+}
