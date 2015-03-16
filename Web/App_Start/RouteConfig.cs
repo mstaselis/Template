@@ -19,37 +19,21 @@ namespace Web
                 .MapRoute(
                     "DefaultWithLanguage",
                     "{language}/{controller}/{action}/{id}",
-                    new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                    new { language = "lt" },
+                    new { language = "en", controller = "Home", action = "Index", id = UrlParameter.Optional },                    
                     new[] { "Web.Controllers" })
                 .DataTokens["UseNamespaceFallback"] = false;
 
-            routes
-                .MapRoute(
-                    "Default",
-                    "{controller}/{action}/{id}",
-                    new { language = "en", controller = "Home", action = "Index", id = UrlParameter.Optional },
-                    new { language = "en" },
-                    new[] { "Web.Controllers" })
-                .DataTokens["UseNamespaceFallback"] = false;
+           
 
             routes
                 .MapRoute(
                     "DefaultAreaWithLanguage",
                     "{area}/{language}/{controller}/{action}/{id}",
-                    new { controller = "Home", action = "Index", id = UrlParameter.Optional, area = "Admin" },
-                    new { language = "lt" },
+                    new { language = "en", controller = "Home", action = "Index", id = UrlParameter.Optional, area = "Admin" },                  
                     new[] { "Web.Areas.Admin.Controllers" })
                 .DataTokens["UseNamespaceFallback"] = false;
 
-            routes
-                .MapRoute(
-                    "DefaultArea",
-                    "{area}/{controller}/{action}/{id}",
-                    new { language = "en", controller = "Home", action = "Index", id = UrlParameter.Optional, area = "Admin" },
-                    new { language = "en" },
-                    new[] { "Web.Areas.Admin.Controllers" })
-                .DataTokens["UseNamespaceFallback"] = false;
+            
 
         }
     }
