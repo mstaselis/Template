@@ -1,0 +1,19 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
+@using System.Web.Mvc.Html
+@using System.Linq
+@using MvcSiteMapProvider.Web.Html.Models
+
+
+@foreach (var node in Model)
+{
+    string url = node.IsClickable ? node.Url : "#";
+    var icon = node.Attributes.ContainsKey("icon") ? node.Attributes["icon"].ToString() : "";
+
+    <li>
+        <a href="@url">
+            <i class="@icon"></i>
+            @node.Title
+        </a>
+    </li>
+
+}

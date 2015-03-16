@@ -1,0 +1,83 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+
+@helper  TopMenu(List<SiteMapNodeModel> nodeList)
+{
+
+    <ul class="templatemo-sidebar-menu">
+        @foreach (SiteMapNodeModel node in nodeList)
+        {
+            string url = node.IsClickable ? node.Url : "#";
+            var icon = node.Attributes.ContainsKey("icon") ? node.Attributes["icon"].ToString() : "";
+
+            if (!node.Children.Any())
+            {
+                var className = @node.IsCurrentNode ? "active" : String.Empty;
+
+
+                <li class="@className">
+                    <a href="@url">
+                        <i class="@icon"></i>
+                        <span>@node.Title</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                var className = @node.IsInCurrentPath ? "active" : String.Empty;
+
+                <li class="treeview @className">
+                    <a href="#">
+                        <i class="@icon"></i>
+                        <span>@node.Title</span>
+                        <i class="fa pull-right fa-angle-down"></i>
+                        @DropDownMenu(node.Children)
+                    </a>
+                </li>
+            }
+
+
+        }
+    </ul>
+
+}
+
+@helper DropDownMenu(SiteMapNodeModelList nodeList)
+{
+    <ul class="treeview-menu" role="menu">
+        @foreach (SiteMapNodeModel node in nodeList)
+        {
+
+            string url = node.IsClickable ? node.Url : "#";
+            var icon = node.Attributes.ContainsKey("icon") ? node.Attributes["icon"].ToString() : "";
+
+            if (!node.Children.Any())
+            {
+                var className = @node.IsCurrentNode ? "active" : String.Empty;
+
+                <li class="@className">
+                    <a href="@url">
+                        <i class="@icon"></i>
+                        <span>@node.Title</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                var className = @node.IsInCurrentPath ? "active" : String.Empty;
+
+                <li class="treeview @className">
+                    <a href="#">
+                        <i class="@icon"></i>
+                        <span>@node.Title</span>
+                        <i class="fa pull-right fa-angle-down"></i>
+                        @DropDownMenu(node.Children)
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+}
+
+@TopMenu(Model.Nodes)
