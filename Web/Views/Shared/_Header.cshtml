@@ -7,23 +7,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        
-    </div>
 
-    <!-- Split button -->
-    <div class="btn-group pull-right language-selector-button">
-        <button type="button" class="btn match-backgroud"><i class="fa fa-language"></i></button>
-        <button type="button" class="btn dropdown-toggle match-backgroud" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu match-backgroud" role="menu">
-            @{
-                foreach(var systemLanguage in Framework.Model.Util.LanguageProvider.SystemLanguages.Languages)
-                {
-                    <li>@Html.ActionLink(systemLanguage.Title, "Index", new { language = systemLanguage.Code, controller = "Home" })</li>
-                }
-            }
-        </ul>
     </div>
+    <ul class="nav navbar-nav navbar-right language-selector-button">
+        <li class="dropdown tasks-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-flag-o"></i>
+            </a>
+
+            <ul class="dropdown-menu">
+                @{
+                    foreach (var systemLanguage in Framework.Model.Util.LanguageProvider.SystemLanguages.Languages)
+                    {
+                        <li>@Html.ActionLink(systemLanguage.Title, "Index", new { language = systemLanguage.Code, controller = "Home" })</li>
+                    }
+                }
+            </ul>
+
+        </li>
+    </ul>
+
 </div>
